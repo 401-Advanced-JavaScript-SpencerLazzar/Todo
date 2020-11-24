@@ -1,11 +1,24 @@
-import React from 'react'
 
-const List = () => {
-  return (
-    <div>
-      <h6>This will be the List</h6>
-    </div>
-  )
+import React from 'react';
+
+class TodoList extends React.Component {
+
+  render() {
+    return (
+      <ul>
+        {this.props.list.map(item => (
+          <li
+            className={`complete-${item.complete.toString()}`}
+            key={item._id}
+          >
+            <span onClick={() => this.props.handleComplete(item._id)}>
+              {item.text}
+            </span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
 }
 
-export default List
+export default TodoList;
